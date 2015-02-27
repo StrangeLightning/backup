@@ -26,14 +26,6 @@ mongoose.connect(config.mongo.uri, { mongos: true }, function(err){
   if (err) (console.log)
 });
 
-mongooose.connection.on('open', function () {
-  console.log("mongodb connection open");
-}
-// Populate DB with sample data
-if (config.seedDB) {
-  require('./server/config/seed');
-}
-
 // Setup server
 var app = express();
 var serverHTTPS = require('https').createServer(credentials, app);
