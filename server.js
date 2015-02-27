@@ -22,7 +22,7 @@ var credentials = {
 
 // Connect to database
 console.log(config.mongo.uri);
-mongoose.createConnection(config.mongo.uri, function(err){
+mongoose.connect(config.mongo.uri, { mongos: true }, function(err){
   if (err) console.log)
 });
 
