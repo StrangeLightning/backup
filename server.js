@@ -21,10 +21,12 @@ var credentials = {
 };
 
 // Connect to database
-console.log(config.mongo.uri);
-mongoose.connect(config.mongo.uri, { mongos: true }, function(err){
-  if (err) (console.log)
-});
+var options = {
+  server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
+  replset: { rs_name: 'mongo-rs', socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 }}
+}
+
+mongoose.connect(config.mongo.uri, options);
 
 // Setup server
 var app = express();
